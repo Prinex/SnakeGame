@@ -1,7 +1,7 @@
 import turtle
 import time
 
-# movement functions
+# movement function
 
 delay = 0.1
 
