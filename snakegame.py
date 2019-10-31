@@ -1,4 +1,6 @@
 import turtle
+from tkinter import PhotoImage
+
 
 
 
@@ -11,19 +13,21 @@ def game():
     window.setup(width=640, height=480, startx=None, starty=None)
     window.tracer(0)
 
-    # https://inventwithscratch.com/book/chapter6.html for sprite
-    # https://blog.trinket.io/using-images-in-turtle-programs/
-    # snake body
-    # ex: turtleAvatar = "image.png"
-    body = turtle.Turtle()
-    body.speed(0)
-    body.shape("square") #turtle_avatar
-    body.penup()
-    body.color("#303324")
-    body.goto(0, 0)
-    body.shapesize(0.75, 0.75, 0.75)
+    
+    # snake body 
+    turtleAvatar = "snakebody.gif"
+    head = turtle.Turtle()
+    head.speed(0)
+    window.addshape(turtleAvatar)
+    head.shape(turtleAvatar) 
+    head.penup()
+    head.color("#303324")
+    head.goto(0, 0)
+    head.direction = "stop"
 
     while True:
         window.update()
 
     window.mainloop()
+
+
