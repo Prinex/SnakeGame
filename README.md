@@ -1,3 +1,8 @@
-# This is a snake game
+Hello. This is a snake game made with turtle graphics and sprite objects.
 
-Using turtle graphics
+*Use the following keys for playing the game:
+(w) - for moving uo
+(s) - for moving down
+(a) - for moving to the left
+(d) - for moving to the right
+(e) - for exiting the game
