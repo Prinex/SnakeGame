@@ -12,11 +12,11 @@ window.bgcolor("#7FB300")
 window.setup(width=640, height=480, startx=None, starty=None)
 window.tracer(0)
     
-# snake body 
-turtleAvatar = "snakehead.gif"
-head = turtle.Turtle()
-head.speed(0)
-window.addshape(turtleAvatar)
+# snake head 
+turtleAvatar = "headright.gif"  
+head = turtle.Turtle() 
+head.speed(0) 
+window.addshape(turtleAvatar)  
 head.shape(turtleAvatar) 
 head.penup()
 head.color("#303324")
@@ -25,7 +25,6 @@ head.direction = "stop"
 
 
 # snake bonus 
-
 turtleBonus = "bonusg.gif"
 bonus = turtle.Turtle()
 bonus.speed(0)
@@ -49,24 +48,47 @@ def go_left():
     head.direction = "left"
 
 def go_right():
-    head.direction = "right"
+    head.direction = "right" 
 
 def move():
+    # switching the head and body direction to up
     if head.direction == "up":
+        turtleAvatar = "headup.gif"
+        window.addshape(turtleAvatar) 
+        head.shape(turtleAvatar)
+
+        seg = "bg12.gif"
+
         y = head.ycor()
         head.sety(y + 20)
 
+
+    # switching the head and body direction to up
     if head.direction == "down":
+        turtleAvatar = "headdown.gif"
+        window.addshape(turtleAvatar) 
+        head.shape(turtleAvatar)
         y = head.ycor()
         head.sety(y - 20)
 
+
+    # switching the head and body direction to up
     if head.direction == "left":
+        turtleAvatar = "headleft.gif"
+        window.addshape(turtleAvatar) 
+        head.shape(turtleAvatar) 
         x = head.xcor()
         head.setx(x - 20)
 
+
+    # switching the head and body direction to up
     if head.direction == "right":
+        turtleAvatar = "headright.gif"
+        window.addshape(turtleAvatar) 
+        head.shape(turtleAvatar) 
         x = head.xcor()
         head.setx(x + 20)
+
 
 # key bindings
 window.listen()
@@ -87,7 +109,7 @@ while True:
         bonus.goto(x, y)
 
         # Adding segments
-        seg = "bodyg.gif"
+        seg = "bg12.gif"
         new_segment = turtle.Turtle()
         new_segment.speed(0)
         window.addshape(seg)
@@ -97,16 +119,17 @@ while True:
         segments.append(new_segment)
     
 
-    # Incresing with the first segment
-    if len(segments) > 0:
-        x = head.xcor()
-        y = head.ycor()
-        segments[0].goto(x, y)
     # Body incresing
     for index in range(len(segments) - 1, 0, -1):
         x = segments[index - 1].xcor()
         y = segments[index - 1].ycor()
         segments[index].goto(x, y)
+
+    # Incresing with the first segment
+    if len(segments) > 0:
+        x = head.xcor()
+        y = head.ycor()
+        segments[0].goto(x, y)
 
 
     move()
