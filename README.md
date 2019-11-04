@@ -1,4 +1,4 @@
-Hello. This is a snake game made with turtle graphics and sprite objects.
+This is a snake game made with turtle graphics and sprite objects.
 
 *Use the following keys for playing the game:
 (w) - for moving up
