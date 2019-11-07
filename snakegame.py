@@ -1,11 +1,10 @@
 import turtle
 import time
 import random
-# movement function
 
+# snake's speed
 delay = 0.1
 
-# score count
 score_count = 0
 
 highest_score = 0
