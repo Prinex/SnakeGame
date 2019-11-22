@@ -9,7 +9,16 @@ score_count = 0
 
 highest_score = 0
 
-# window game
+"""
+    TODO: 
+    *declare and define __init__ constructor for initializing the turtle objects 
+    *declare and define window method for the window game
+    *declare and define a method for initializing the and modifying the snake sprite
+    *declare and define the methods for movement
+    *declare method for the game's mainloop
+    *create method for exiting the game
+"""
+
 window = turtle.Screen()
 window.title("Snake.exe")
 window.bgcolor("#7FB300")
