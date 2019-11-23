@@ -13,10 +13,11 @@ highest_score = 0
     TODO: 
     *declare and define __init__ constructor for initializing the turtle objects 
     *declare and define window method for the window game
-    *declare and define a method for initializing the and modifying the snake sprite
+    *declare and define a method for initializing and modifying the snake's sprite
     *declare and define the methods for movement
     *declare method for the game's mainloop
     *create method for exiting the game
+    :parameter None - attributes will initialize within the class
 """
 
 window = turtle.Screen()
@@ -90,7 +91,7 @@ def move():
         head.sety(y + 20)
 
 
-    # switching the head and body direction to up
+    # switching the head and body direction to down
     if head.direction == "down":
         turtleAvatar = "headdown.gif"
         window.addshape(turtleAvatar) 
@@ -99,7 +100,7 @@ def move():
         head.sety(y - 20)
 
 
-    # switching the head and body direction to up
+    # switching the head and body direction to left
     if head.direction == "left":
         turtleAvatar = "headleft.gif"
         window.addshape(turtleAvatar) 
@@ -108,7 +109,7 @@ def move():
         head.setx(x - 20)
 
 
-    # switching the head and body direction to up
+    # switching the head and body direction to right
     if head.direction == "right":
         turtleAvatar = "headright.gif"
         window.addshape(turtleAvatar) 
@@ -140,7 +141,7 @@ while True:
 
     
 
-        # Move an clear the list when the snake hits the borders
+        # Move and clear the list when the snake hits the borders
         for segment in segments:
             segment.goto(2000, 2000)
         segments.clear()
