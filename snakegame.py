@@ -1,213 +1,204 @@
-import random
-import time
 import turtle
-
-# snake's speed
-delay = 0.1
-score_count = 0
-
-highest_score = 0
-
-"""
-    TODO: 
-    *declare and define __init__ constructor for initializing the turtle objects 
-    *declare and define window method for the window game
-    *declare and define a method for initializing and modifying the snake's sprite
-    *declare and define the methods for movement
-    *declare method for the game's mainloop
-    *create method for exiting the game
-    :parameter None - attributes will initialize within the class
-"""
-
-window = turtle.Screen()
-window.title("Snake.exe")
-window.bgcolor("#7FB300")
-window.setup(width=800, height=600, startx=None, starty=None)
-window.tracer(0)
-    
-# snake head 
-turtleAvatar = "headright.gif"  
-head = turtle.Turtle()
-head.speed(0) 
-window.addshape(turtleAvatar)  
-head.shape(turtleAvatar) 
-head.penup()
-head.color("#303324")
-head.goto(0, 0)
-head.direction = "stop"
+import time
+import random
 
 
-# snake bonus
-turtleBonus = "bonusg.gif"
-bonus = turtle.Turtle()
-bonus.speed(0)
-window.addshape(turtleBonus)
-bonus.shape(turtleBonus)
-bonus.penup()
-bonus.color("#303324")
-bonus.goto(0, 100)
+class Game:
+    delay = 0.1
+    score_count = 0
+    highest_score = 0
 
-# body segments
-segments = []
+    # sprites
+    turtleAvatar = "headright.gif"
+    turtleBonus = "bonusg.gif"
+    seg = "bg123.gif"
 
-
-# Score counter
-score = turtle.Turtle()
-score.speed(0)
-score.shape("square")
-score.color("white")
-score.penup()
-score.hideturtle()
-score.goto(0, 268)
-score.write("Score: 0   Highest Score: 0", align = "center", font = ("Slab Serif", 22, "normal"))
-
-# movement functions
-def go_up():
-    if head.direction != "down":
-        head.direction = "up"
-
-def go_down():
-    if head.direction != "up":
-        head.direction = "down"
-
-def go_left():
-    if head.direction != "right":
-        head.direction = "left"
-
-def go_right():
-    if head.direction != "left":
-        head.direction = "right"
-def exit():
-    head.direction = "e"
-
-def move():
-    # switching the head and body direction to up
-    if head.direction == "up":
-        turtleAvatar = "headup.gif"
-        window.addshape(turtleAvatar)
-        head.shape(turtleAvatar)
-        y = head.ycor()
-        head.sety(y + 20)
+    # objects
+    def __init__(self):
+        self.window = turtle.Screen()
+        self.head = turtle.Turtle()
+        self.bonus = turtle.Turtle()
+        self.score = turtle.Turtle()
+        self.segments = []
 
 
-    # switching the head and body direction to down
-    if head.direction == "down":
-        turtleAvatar = "headdown.gif"
-        window.addshape(turtleAvatar)
-        head.shape(turtleAvatar)
-        y = head.ycor()
-        head.sety(y - 20)
+    def wn(self):
+        self.window.title("Snake.exe")
+        self.window.bgcolor("#7FB300")
+        self.window.setup(width=800, height=600, startx=None, starty=None)
+        self.window.tracer(0)
+
+    def sprites(self):
+        # Head
+        self.head.speed(0)
+        self.window.addshape(Game.turtleAvatar)
+        self.head.shape(Game.turtleAvatar)
+        self.head.penup()
+        self.head.color("#303324")
+        self.head.goto(0, 0)
+        self.head.direction = "stop"
+
+        # Bonus
+        self.bonus.speed(0)
+        self.window.addshape(Game.turtleBonus)
+        self.bonus.shape(Game.turtleBonus)
+        self.bonus.penup()
+        self.bonus.color("#303324")
+        self.bonus.goto(0, 100)
+
+        # Score
+        self.score.speed(0)
+        self.score.shape("square")
+        self.score.color("white")
+        self.score.penup()
+        self.score.hideturtle()
+        self.score.goto(0, 268)
+        self.score.write("Score: 0   Highest Score: 0", align="center", font=("Slab Serif", 22, "normal"))
+
+    def go_up(self):
+        if self.head.direction != "down":
+            self.head.direction = "up"
+
+    def go_down(self):
+        if self.head.direction != "up":
+            self.head.direction = "down"
+
+    def go_left(self):
+        if self.head.direction != "right":
+            self.head.direction = "left"
+
+    def go_right(self):
+        if self.head.direction != "left":
+            self.head.direction = "right"
+
+    def exit(self):
+        self.head.direction = "e"
+
+    def move(self):
+        # switching the head and body direction to up
+        if self.head.direction == "up":
+            Game.turtleAvatar = "headup.gif"
+            self.window.addshape(Game.turtleAvatar)
+            self.head.shape(Game.turtleAvatar)
+            y = self.head.ycor()
+            self.head.sety(y + 20)
+
+        # switching the head and body direction to down
+        if self.head.direction == "down":
+            Game.turtleAvatar = "headdown.gif"
+            self.window.addshape(Game.turtleAvatar)
+            self.head.shape(Game.turtleAvatar)
+            y = self.head.ycor()
+            self.head.sety(y - 20)
+
+        # switching the head and body direction to left
+        if self.head.direction == "left":
+            Game.turtleAvatar = "headleft.gif"
+            self.window.addshape(Game.turtleAvatar)
+            self.head.shape(Game.turtleAvatar)
+            x = self.head.xcor()
+            self.head.setx(x - 20)
+
+        # switching the head and body direction to right
+        if self.head.direction == "right":
+            Game.turtleAvatar = "headright.gif"
+            self.window.addshape(Game.turtleAvatar)
+            self.head.shape(Game.turtleAvatar)
+            x = self.head.xcor()
+            self.head.setx(x + 20)
+
+        if self.head.direction == "e":
+            self.window.bye()
+
+    # key bindings
+    def control(self):
+        self.window.listen()
+        self.window.onkeypress(self.go_up, "w")
+        self.window.onkeypress(self.go_down, "s")
+        self.window.onkeypress(self.go_left, "a")
+        self.window.onkeypress(self.go_right, "d")
+        self.window.onkeypress(self.exit, "e")
 
 
-    # switching the head and body direction to left
-    if head.direction == "left":
-        turtleAvatar = "headleft.gif"
-        window.addshape(turtleAvatar)
-        head.shape(turtleAvatar)
-        x = head.xcor()
-        head.setx(x - 20)
+    def mainGame(self):
+        self.wn()
+        self.sprites()
 
+        while True:
+            self.window.update()
 
-    # switching the head and body direction to right
-    if head.direction == "right":
-        turtleAvatar = "headright.gif"
-        window.addshape(turtleAvatar)
-        head.shape(turtleAvatar)
-        x = head.xcor()
-        head.setx(x + 20)
+            # Collision with borders
+            if self.head.xcor() > 370 or self.head.xcor() < -380 or self.head.ycor() > 285.5 or self.head.ycor() < -265:
+                time.sleep(1)
+                self.head.goto(0, 0)
+                self.head.direction = "stop"
 
-    if head.direction == "e":
-        window.bye()
+                # Move and clear the list when the snake hits the borders
+                for segment in self.segments:
+                    segment.goto(2000, 2000)
+                self.segments.clear()
 
+                # score reset
+                self.score_count = 0
+                self.score.clear()
+                self.score.write("Score: {}    Highest Score: {}".format(self.score_count, self.highest_score), align="center",
+                            font=("Slab Serif", 22, "normal"))
 
-# key bindings
-window.listen()
-window.onkeypress(go_up, "w")
-window.onkeypress(go_down, "s")
-window.onkeypress(go_left, "a")
-window.onkeypress(go_right, "d")
-window.onkeypress(exit, "e")
+            # Collision with segment
+            if self.head.distance(self.bonus) < 20:
+                # randomize the bonus on the screen
+                x = random.randint(-375, 375)
+                y = random.randint(-285, 285)
+                self.bonus.goto(x, y)
 
-# main loop game
-while True:
-    window.update()
+                # Adding segments
+                new_segment = turtle.Turtle()
+                new_segment.speed(0)
+                self.window.addshape(Game.seg)
+                new_segment.shape(Game.seg)
+                new_segment.penup()
+                self.segments.append(new_segment)
 
-    # Collision with the borders
-    if head.xcor() > 370 or head.xcor() < -380 or head.ycor()  > 285.5 or head.ycor() < -265:
-        time.sleep(1)
-        head.goto(0, 0)
-        head.direction = "stop"
+                # incresing the score
+                Game.score_count += 5
 
-        # Move and clear the list when the snake hits the borders
-        for segment in segments:
-            segment.goto(2000, 2000)
-        segments.clear()
+                if Game.score_count > Game.highest_score:
+                    Game.highest_score = Game.score_count
+                self.score.clear()
+                self.score.write("Score: {}    Highest Score: {}".format(Game.score_count, Game.highest_score), align="center",
+                            font=("Slab Serif", 22, "normal"))
 
-        # score reset
-        score_count = 0
-        score.clear()
-        score.write("Score: {}    Highest Score: {}".format(score_count, highest_score), align = "center", font = ("Slab Serif", 22, "normal"))
+            # Body incresing
+            for index in range(len(self.segments) - 1, 0, -1):
+                x = self.segments[index - 1].xcor()
+                y = self.segments[index - 1].ycor()
+                self.segments[index].goto(x, y)
 
+            # Incresing with the first segment
+            if len(self.segments) > 0:
+                x = self.head.xcor()
+                y = self.head.ycor()
+                self.segments[0].goto(x, y)
 
-    # Collision with segment
-    if head.distance(bonus) < 20:
-        # randomize the bonus on the screen
-        x = random.randint(-375, 375)
-        y = random.randint(-285, 285)
-        bonus.goto(x, y)
+            self.control()
+            self.move()
 
-        # Adding segments
-        seg = "bg123.gif"
-        new_segment = turtle.Turtle()
-        new_segment.speed(0)
-        window.addshape(seg)
-        new_segment.shape(seg)
-        new_segment.penup()
-        segments.append(new_segment)
+            # Checking for body collision
+            for segment in self.segments:
+                if segment.distance(self.head) < 20:
+                    time.sleep(1)
+                    self.head.goto(0, 0)
+                    self.head.direction = "stop"
 
+                    # Game interrupting
+                    for segment in self.segments:
+                        segment.goto(2000, 2000)
+                    self.segments.clear()
+                    Game.score_count = 0
 
-        # incresing the score
-        score_count += 5
+            time.sleep(Game.delay)
+        init.window.mainloop()
 
-        if score_count > highest_score:
-            highest_score = score_count
-        score.clear()
-        score.write("Score: {}    Highest Score: {}".format(score_count, highest_score), align = "center", font = ("Slab Serif", 22, "normal"))
-
-    # Body incresing
-    for index in range(len(segments) - 1, 0, -1):
-        x = segments[index - 1].xcor()
-        y = segments[index - 1].ycor()
-        segments[index].goto(x, y)
-
-
-
-    # Incresing with the first segment
-    if len(segments) > 0:
-        x = head.xcor()
-        y = head.ycor()
-        segments[0].goto(x, y)
-
-
-    move()
-
-      # Checking for body collision
-    for segment in segments:
-        if segment.distance(head) < 20:
-            time.sleep(1)
-            head.goto(0, 0)
-            head.direction = "stop"
-
-            # Game interrupting
-            for segment in segments:
-                segment.goto(2000, 2000)
-
-            segments.clear()
-
-             # score reset
-            score_count = 0
-
-    time.sleep(delay)
-
-window.mainloop()
+init = Game()
+init.mainGame()
 
