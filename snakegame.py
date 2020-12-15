@@ -9,9 +9,9 @@ class Game:
     highest_score = 0
 
     # sprites
-    turtleAvatar = "headright.gif"
-    turtleBonus = "bonusg.gif"
-    seg = "bg123.gif"
+    turtleAvatar = "./sprites/headright.gif"
+    turtleBonus = "./sprites/bonusg.gif"
+    seg = "./sprites/bg123.gif"
 
     # objects
     def __init__(self):
@@ -77,7 +77,7 @@ class Game:
     def move(self):
         # switching the head and body direction to up
         if self.head.direction == "up":
-            Game.turtleAvatar = "headup.gif"
+            Game.turtleAvatar = "./sprites/headup.gif"
             self.window.addshape(Game.turtleAvatar)
             self.head.shape(Game.turtleAvatar)
             y = self.head.ycor()
@@ -85,7 +85,7 @@ class Game:
 
         # switching the head and body direction to down
         if self.head.direction == "down":
-            Game.turtleAvatar = "headdown.gif"
+            Game.turtleAvatar = "./sprites/headdown.gif"
             self.window.addshape(Game.turtleAvatar)
             self.head.shape(Game.turtleAvatar)
             y = self.head.ycor()
@@ -93,7 +93,7 @@ class Game:
 
         # switching the head and body direction to left
         if self.head.direction == "left":
-            Game.turtleAvatar = "headleft.gif"
+            Game.turtleAvatar = "./sprites/headleft.gif"
             self.window.addshape(Game.turtleAvatar)
             self.head.shape(Game.turtleAvatar)
             x = self.head.xcor()
@@ -101,7 +101,7 @@ class Game:
 
         # switching the head and body direction to right
         if self.head.direction == "right":
-            Game.turtleAvatar = "headright.gif"
+            Game.turtleAvatar = "./sprites/headright.gif"
             self.window.addshape(Game.turtleAvatar)
             self.head.shape(Game.turtleAvatar)
             x = self.head.xcor()
