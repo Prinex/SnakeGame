@@ -17,7 +17,7 @@ window.setup(width=800, height=600, startx=None, starty=None)
 window.tracer(0)
     
 # snake head 
-turtleAvatar = "headright.gif"  
+turtleAvatar = "./sprites/headright.gif"  
 head = turtle.Turtle() 
 head.speed(0) 
 window.addshape(turtleAvatar)  
@@ -29,7 +29,7 @@ head.direction = "stop"
 
 
 # snake bonus 
-turtleBonus = "bonusg.gif"
+turtleBonus = "./sprites/bonusg.gif"
 bonus = turtle.Turtle()
 bonus.speed(0)
 window.addshape(turtleBonus)
@@ -74,7 +74,7 @@ def exit():
 def move():
     # switching the head and body direction to up
     if head.direction == "up":
-        turtleAvatar = "headup.gif"
+        turtleAvatar = "./sprites/headup.gif"
         window.addshape(turtleAvatar) 
         head.shape(turtleAvatar)
         y = head.ycor()
@@ -83,7 +83,7 @@ def move():
 
     # switching the head and body direction to up
     if head.direction == "down":
-        turtleAvatar = "headdown.gif"
+        turtleAvatar = "./sprites/headdown.gif"
         window.addshape(turtleAvatar) 
         head.shape(turtleAvatar)
         y = head.ycor()
@@ -92,7 +92,7 @@ def move():
 
     # switching the head and body direction to up
     if head.direction == "left":
-        turtleAvatar = "headleft.gif"
+        turtleAvatar = "./sprites/headleft.gif"
         window.addshape(turtleAvatar) 
         head.shape(turtleAvatar) 
         x = head.xcor()
@@ -101,7 +101,7 @@ def move():
 
     # switching the head and body direction to up
     if head.direction == "right":
-        turtleAvatar = "headright.gif"
+        turtleAvatar = "./sprites/headright.gif"
         window.addshape(turtleAvatar) 
         head.shape(turtleAvatar) 
         x = head.xcor()
@@ -151,7 +151,7 @@ while True:
         bonus.goto(x, y)
 
         # Adding segments
-        seg = "bg123.gif"
+        seg = "./sprites/bg123.gif"
         new_segment = turtle.Turtle()
         new_segment.speed(0)
         window.addshape(seg)
