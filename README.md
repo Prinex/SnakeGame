@@ -8,3 +8,6 @@ A snake game written for my university portfolio
 * (a) - for moving to the left
 * (d) - for moving to the right
 * (e) - for exiting the game
+
+## If running on linux, to fix turtle error run:
+* sudo apt-get install python3-tk
