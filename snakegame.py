@@ -199,6 +199,7 @@ class Game:
             time.sleep(Game.delay)
         init.window.mainloop()
 
-init = Game()
-init.mainGame()
+if __name__=="__main__":
+    init = Game()
+    init.mainGame()
 
