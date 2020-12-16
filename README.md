@@ -1,13 +1,12 @@
-This is a snake game made with turtle graphics and sprite objects.
+A snake game written for my university portfolio
 
-*Use the following keys for playing the game:
+![Game window](/sprites/window.png)
 
-(w) - for moving up
+Format: ![Alt Text](url)
 
-(s) - for moving down
-
-(a) - for moving to the left
-
-(d) - for moving to the right
-
-(e) - for exiting the game
+## Game Instructions:
+* (w) - for moving up
+* (s) - for moving down
+* (a) - for moving to the left
+* (d) - for moving to the right
+* (e) - for exiting the game
