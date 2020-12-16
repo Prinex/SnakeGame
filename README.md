@@ -1,4 +1,4 @@
-A snake game written for my university portfolio
+## A snake game written for my university portfolio
 
 ![Game window](/sprites/window.png)
 
